@@ -79,8 +79,9 @@ namespace Presentation
         private void btnEAgregar_Click(object sender, EventArgs e)
         {
             FrmEstudiantes frmEstudiantes = new FrmEstudiantes();
-            frmEstudiantes.matriculasModel = this.matriculasModel;
+            //frmEstudiantes.matriculasModel = this.matriculasModel;
             frmEstudiantes.estudiatesModel = this.estudiantesModel;
+            frmEstudiantes.matriculas = matriculasModel.GetAll();
             frmEstudiantes.Activate();
             frmEstudiantes.Show();
             this.Hide();

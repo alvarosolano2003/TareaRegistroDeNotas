@@ -15,7 +15,7 @@ namespace Presentation
 {
     public partial class FrmNotas : Form
     {
-        public NotasModel notasModel;
+        public NotasModel notasModel = new NotasModel();
         public Asignaturas[] asignaturas;
         public int c { get; set; }
         public FrmNotas(Asignaturas[] arr)
@@ -60,7 +60,7 @@ namespace Presentation
 
         private void FrmNotas_Load(object sender, EventArgs e)
         {
-            notasModel.DeleteAll();
+           // notasModel.DeleteAll();
 
             if (c == asignaturas.Length)
             {

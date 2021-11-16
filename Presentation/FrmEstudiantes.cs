@@ -14,21 +14,21 @@ namespace Presentation
 {
     public partial class FrmEstudiantes : Form
     {
-        public MatriculasModel matriculasModel;
+        public MatriculasModel matriculasModel = new MatriculasModel();
         public EstudiantesModel estudiatesModel;
-        public NotasModel notasModel;
+        public NotasModel notasModel = new NotasModel();
         public List<Matriculas> matriculas;
         public int i { get; set; }
         public FrmEstudiantes()
         {
-            matriculas = matriculasModel.GetAll();
+            //matriculas = matriculasModel.GetAll();
             InitializeComponent();
         }
 
         private void FrmEstudiantes_Load(object sender, EventArgs e)
         {
             lblNMatricula.Text = matriculas[i].NumeroDeMatricula.ToString();
-            txtCarnet.Text = matriculas[i].Carnet;
+            txtCarnet.Text = matriculas[i].Carnet; 
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -102,6 +102,7 @@ namespace Presentation
 
         private void btnMSiguiente_Click(object sender, EventArgs e)
         {
+            //matriculas = matriculasModel.GetAll();
             ++i;
             lblNMatricula.Text = matriculas[i].NumeroDeMatricula.ToString();
             CLS();
@@ -127,6 +128,7 @@ namespace Presentation
                 lblCalificaciones.Text = "Calificaciones Agregadas";
 
                 btnAceptar.Visible = false;
+                return;
             }
 
             txtNombre.Text = string.Empty;
@@ -144,6 +146,11 @@ namespace Presentation
             {
                 throw new ArgumentException("Todos los campos deben estar llenos.");
             }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"{matriculas.Count}");
         }
     }
 }
