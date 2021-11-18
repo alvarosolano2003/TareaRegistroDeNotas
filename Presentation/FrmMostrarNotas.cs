@@ -25,7 +25,7 @@ namespace Presentation
 
         private void btnMostrarNotas_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = lisEModel[cmbEChose.SelectedIndex];
+            dataGridView1.DataSource = lisEModel;
         }
 
         private void FrmMostrarNotas_Load(object sender, EventArgs e)

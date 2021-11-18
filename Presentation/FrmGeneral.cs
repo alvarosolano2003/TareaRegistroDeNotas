@@ -155,6 +155,7 @@ namespace Presentation
                 CatchExceptions(AccesData.estudiantesModelAD.GetAll().Count == 0);
 
                 FrmMostrarNotas frmMostrarNotas = new FrmMostrarNotas();
+                frmMostrarNotas.estudiantesModel = this.estudiantesModel;
                 frmMostrarNotas.Show();
                 this.Hide();
 
