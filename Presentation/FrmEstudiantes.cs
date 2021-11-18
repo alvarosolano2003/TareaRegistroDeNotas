@@ -120,9 +120,16 @@ namespace Presentation
         {
             --i;
             //AccesData.count = i;
-            lblNMatricula.Text = matriculasModel.GetAll()[i].NumeroDeMatricula.ToString();
-            CLS();
-            CheckLimits();
+            try
+            {
+                lblNMatricula.Text = matriculasModel.GetAll()[i].NumeroDeMatricula.ToString();
+                CLS();
+                CheckLimits();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                ++i;
+            }
         }
 
         private void CLS()
