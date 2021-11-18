@@ -33,6 +33,7 @@ namespace Presentation
             this.btnMAgregar = new System.Windows.Forms.Button();
             this.btnShowInformation = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnShowEstudiantes = new System.Windows.Forms.Button();
             this.btnECMostrar = new System.Windows.Forms.Button();
             this.btnEAgregar = new System.Windows.Forms.Button();
             this.rtbMatriculas = new System.Windows.Forms.RichTextBox();
@@ -40,7 +41,6 @@ namespace Presentation
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnShowEstudiantes = new System.Windows.Forms.Button();
             this.gbMatriculas.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +74,7 @@ namespace Presentation
             this.btnShowInformation.TabIndex = 4;
             this.btnShowInformation.Text = "Mostrar Informacion";
             this.btnShowInformation.UseVisualStyleBackColor = true;
+            this.btnShowInformation.Click += new System.EventHandler(this.btnShowInformation_Click);
             // 
             // groupBox3
             // 
@@ -86,6 +87,16 @@ namespace Presentation
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Estudiantes";
+            // 
+            // btnShowEstudiantes
+            // 
+            this.btnShowEstudiantes.Location = new System.Drawing.Point(7, 80);
+            this.btnShowEstudiantes.Name = "btnShowEstudiantes";
+            this.btnShowEstudiantes.Size = new System.Drawing.Size(178, 23);
+            this.btnShowEstudiantes.TabIndex = 2;
+            this.btnShowEstudiantes.Text = "Mostrar informacion";
+            this.btnShowEstudiantes.UseVisualStyleBackColor = true;
+            this.btnShowEstudiantes.Click += new System.EventHandler(this.btnShowEstudiantes_Click);
             // 
             // btnECMostrar
             // 
@@ -149,16 +160,6 @@ namespace Presentation
             this.label2.Size = new System.Drawing.Size(143, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Estudiantes en formato Json:";
-            // 
-            // btnShowEstudiantes
-            // 
-            this.btnShowEstudiantes.Location = new System.Drawing.Point(7, 80);
-            this.btnShowEstudiantes.Name = "btnShowEstudiantes";
-            this.btnShowEstudiantes.Size = new System.Drawing.Size(178, 23);
-            this.btnShowEstudiantes.TabIndex = 2;
-            this.btnShowEstudiantes.Text = "Mostrar informacion";
-            this.btnShowEstudiantes.UseVisualStyleBackColor = true;
-            this.btnShowEstudiantes.Click += new System.EventHandler(this.btnShowEstudiantes_Click);
             // 
             // FrmGeneral
             // 

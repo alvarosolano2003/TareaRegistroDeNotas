@@ -165,5 +165,12 @@ namespace Presentation
                 MessageBox.Show($"{ex.Message}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnShowInformation_Click(object sender, EventArgs e)
+        {
+            FrmMostrarInformacion frmMostrar = new FrmMostrarInformacion();
+            frmMostrar.matriculas = matriculasModel.GetAll();
+            frmMostrar.Show();
+        }
     }
 }
