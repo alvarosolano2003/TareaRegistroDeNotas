@@ -16,6 +16,7 @@ namespace Presentation
     public partial class FrmNotas : Form
     {
         public NotasModel notasModel = new NotasModel();
+        public List<Matriculas> listMatriculas;
         public Asignaturas[] asignaturas;
         public int c { get; set; }
         public FrmNotas(Asignaturas[] arr)
@@ -51,8 +52,9 @@ namespace Presentation
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
+            AccesData.notasModelAD = notasModel;
+
             FrmEstudiantes frmEstudiantes = new FrmEstudiantes();
-            frmEstudiantes.notasModel = this.notasModel;
             frmEstudiantes.Activate();
             frmEstudiantes.Show();
             this.Close();
@@ -60,18 +62,16 @@ namespace Presentation
 
         private void FrmNotas_Load(object sender, EventArgs e)
         {
-           // notasModel.DeleteAll();
-
-            if (c == asignaturas.Length)
+            if (c == asignaturas.Length - 1)
             {
                 btnSiguiente.Visible = false;
-                lblAsignatura.Text = string.Empty;
+                lblAsignatura.Text = DeterminateAsignatura(asignaturas[c]);
                 lblARestantes.Text = "0";
             }
             else
             {
                 lblAsignatura.Text = DeterminateAsignatura(asignaturas[c]);
-                lblARestantes.Text = $"{asignaturas.Length - c}";
+                lblARestantes.Text = $"{asignaturas.Length - c - 1}";
             }
 
             CLS();
@@ -95,10 +95,10 @@ namespace Presentation
         {
             ++c;
 
-            if (c == asignaturas.Length)
+            if (c == asignaturas.Length - 1)
             {
                 btnSiguiente.Visible = false;
-                lblAsignatura.Text = string.Empty;
+                lblAsignatura.Text = DeterminateAsignatura(asignaturas[c]);
                 lblARestantes.Text = "0";
             }
             else

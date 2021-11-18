@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesData.cs" />
     <Compile Include="FrmEstudiantes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,17 +59,23 @@
     <Compile Include="FrmGeneral.Designer.cs">
       <DependentUpon>FrmGeneral.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmInformacionNotas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmInformacionNotas.Designer.cs">
-      <DependentUpon>FrmInformacionNotas.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmMatricula.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMatricula.Designer.cs">
       <DependentUpon>FrmMatricula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMostrarEstudiantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMostrarEstudiantes.Designer.cs">
+      <DependentUpon>FrmMostrarEstudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMostrarNotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMostrarNotas.Designer.cs">
+      <DependentUpon>FrmMostrarNotas.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmNotas.cs">
       <SubType>Form</SubType>
@@ -84,11 +91,14 @@
     <EmbeddedResource Include="FrmGeneral.resx">
       <DependentUpon>FrmGeneral.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmInformacionNotas.resx">
-      <DependentUpon>FrmInformacionNotas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmMatricula.resx">
       <DependentUpon>FrmMatricula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMostrarEstudiantes.resx">
+      <DependentUpon>FrmMostrarEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMostrarNotas.resx">
+      <DependentUpon>FrmMostrarNotas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNotas.resx">
       <DependentUpon>FrmNotas.cs</DependentUpon>

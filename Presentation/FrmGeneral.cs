@@ -15,22 +15,34 @@ namespace Presentation
 {
     public partial class FrmGeneral : Form
     {
-        public MatriculasModel matriculasModel;
-        public EstudiantesModel estudiantesModel;
+        public MatriculasModel matriculasModel = new MatriculasModel();
+        public EstudiantesModel estudiantesModel = new EstudiantesModel();
         public FrmGeneral()
         {
-            matriculasModel = new MatriculasModel();
-            estudiantesModel = new EstudiantesModel();
+            matriculasModel = AccesData.matriculaModelAD == null ? new MatriculasModel() : AccesData.matriculaModelAD; 
             InitializeComponent();
         }
 
         private void btnMAgregar_Click(object sender, EventArgs e)
         {
-            FrmMatricula matriculaFrm = new FrmMatricula();
-            matriculaFrm.matriculasModel = this.matriculasModel;
-            matriculaFrm.Activate();
-            matriculaFrm.Show();
-            this.Hide();
+            try
+            {
+                GetAccesData();
+
+                FrmMatricula matriculaFrm = new FrmMatricula();
+                matriculaFrm.matriculasModel = this.matriculasModel;
+                matriculaFrm.Activate();
+                matriculaFrm.Show();
+                this.Hide();
+
+                GetAccesData();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show($"{ex.Message}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
         }
 
         private void FrmGeneral_Activated(object sender, EventArgs e)
@@ -38,21 +50,19 @@ namespace Presentation
             ShowInRTB();
         }
 
-        private void btnPrueba_Click(object sender, EventArgs e)
-        {
-            ShowInRTB();
-
-            MessageBox.Show($"{matriculasModel.GetAll().Count}");
-        }
-
         private void ShowInRTB()
         {
+            int b = matriculasModel.GetAll().Count;
+
             if (matriculasModel.GetAll().Count == 0)
             {
+                AddAccesData();
                 rtbMatriculas.Text = "No hay informacion para mostar.";
             }
             else
             {
+                GetAccesData();
+
                 List<Matriculas> listMatriculas = matriculasModel.GetAll();
                 string aux = string.Empty;
                 int i = 1;
@@ -72,19 +82,88 @@ namespace Presentation
             }
             else
             {
+                GetAccesData();
+
                 rtbJsonEstudiantes.Text = estudiantesModel.GetAsJson();
             }
         }
 
         private void btnEAgregar_Click(object sender, EventArgs e)
         {
-            FrmEstudiantes frmEstudiantes = new FrmEstudiantes();
-            //frmEstudiantes.matriculasModel = this.matriculasModel;
-            frmEstudiantes.estudiatesModel = this.estudiantesModel;
-            frmEstudiantes.matriculas = matriculasModel.GetAll();
-            frmEstudiantes.Activate();
-            frmEstudiantes.Show();
-            this.Hide();
+            try
+            {
+                CatchExceptions(AccesData.matriculaModelAD.GetAll().Count == 0);
+
+                AddAccesData();
+
+                FrmEstudiantes frmEstudiantes = new FrmEstudiantes();
+                frmEstudiantes.Activate();
+                frmEstudiantes.Show();
+                this.Hide();
+
+                GetAccesData();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show($"{ex.Message}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void AddAccesData()
+        {
+            AccesData.estudiantesModelAD = this.estudiantesModel;
+            AccesData.matriculaModelAD = this.matriculasModel;
+        }
+
+        private void GetAccesData()
+        {
+            this.estudiantesModel = AccesData.estudiantesModelAD;
+            this.matriculasModel = AccesData.matriculaModelAD;
+        }
+
+        private void CatchExceptions(bool v)
+        {
+            if (v == true)
+            {
+                throw new ArgumentException("No existen datos para mostrar. Agregue datos.");
+            }
+        }
+
+        private void btnShowEstudiantes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CatchExceptions(AccesData.estudiantesModelAD.GetAll().Count == 0);
+
+                FrmMostrarEstudiantes frmMostrarEstudiantes = new FrmMostrarEstudiantes();
+                frmMostrarEstudiantes.Show();
+                this.Hide();
+
+                //GetAccesData();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show($"{ex.Message}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnECMostrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CatchExceptions(AccesData.estudiantesModelAD.GetAll().Count == 0);
+
+                FrmMostrarNotas frmMostrarNotas = new FrmMostrarNotas();
+                frmMostrarNotas.Show();
+                this.Hide();
+
+                GetAccesData();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show($"{ex.Message}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

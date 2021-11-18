@@ -14,21 +14,26 @@ namespace Presentation
 {
     public partial class FrmEstudiantes : Form
     {
-        public MatriculasModel matriculasModel = new MatriculasModel();
+        public MatriculasModel matriculasModel;
         public EstudiantesModel estudiatesModel;
-        public NotasModel notasModel = new NotasModel();
-        public List<Matriculas> matriculas;
+        public NotasModel notasModel;
+
         public int i { get; set; }
         public FrmEstudiantes()
         {
-            //matriculas = matriculasModel.GetAll();
+            i = AccesData.count;
+            matriculasModel = AccesData.matriculaModelAD;
+            notasModel = AccesData.notasModelAD;
+            estudiatesModel = i > 0 ? AccesData.estudiantesModelAD : new EstudiantesModel();
             InitializeComponent();
         }
 
         private void FrmEstudiantes_Load(object sender, EventArgs e)
         {
-            lblNMatricula.Text = matriculas[i].NumeroDeMatricula.ToString();
-            txtCarnet.Text = matriculas[i].Carnet; 
+            lblNMatricula.Text = matriculasModel.GetAll()[i].NumeroDeMatricula.ToString();
+            txtCarnet.Text = matriculasModel.GetAll()[i].Carnet;
+            CLS();
+            CheckLimits();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -43,8 +48,8 @@ namespace Presentation
 
                 Estudiantes est = new Estudiantes()
                 {
-                    Matricula = matriculas[i],
-                    Id = matriculas[i].NumeroDeMatricula,
+                    Matricula = matriculasModel.GetAll()[i],
+                    Id = matriculasModel.GetAll()[i].NumeroDeMatricula,
                     Nombres = txtNombre.Text,
                     Apellidos = txtApellido.Text,
                     Carnet = txtCarnet.Text,
@@ -52,11 +57,6 @@ namespace Presentation
                     Edad = DateTime.Now.Year - dtpFechaNacimiento.Value.Year,
                     Notas = notasModel.GetAll().ToArray()
                 };
-
-                if (estudiatesModel.GetAnyBy(a => a.Id == matriculas[i].NumeroDeMatricula) != null)
-                {
-                    estudiatesModel.Delete(estudiatesModel.GetAnyBy(a => a.Id == matriculas[i].NumeroDeMatricula));
-                }
 
                 estudiatesModel.Create(est);
 
@@ -71,13 +71,20 @@ namespace Presentation
 
         private void btnCAgregar_Click(object sender, EventArgs e)
         {
-            FrmNotas frmNotas = new FrmNotas(matriculas[i].Asignaturas);
+            AccesData.estudiantesModelAD = estudiatesModel;
+            AccesData.count = i;
+
+            FrmNotas frmNotas = new FrmNotas(matriculasModel.GetAll()[i].Asignaturas);
             frmNotas.Show();
             this.Hide();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            AccesData.count = 0;
+            AccesData.estudiantesModelAD = estudiatesModel;
+            AccesData.matriculaModelAD = matriculasModel;
+
             FrmGeneral frmGeneral = new FrmGeneral();
             frmGeneral.matriculasModel = this.matriculasModel;
             frmGeneral.estudiantesModel = this.estudiatesModel;
@@ -88,7 +95,7 @@ namespace Presentation
 
         private void CheckLimits()
         {
-            if (matriculas.Count == i)
+            if (matriculasModel.GetAll().Count - 1 == i)
             {
                 btnMSiguiente.Visible = false;
                 btnMAnterior.Visible = true;
@@ -102,9 +109,9 @@ namespace Presentation
 
         private void btnMSiguiente_Click(object sender, EventArgs e)
         {
-            //matriculas = matriculasModel.GetAll();
             ++i;
-            lblNMatricula.Text = matriculas[i].NumeroDeMatricula.ToString();
+            //AccesData.count = i;
+            lblNMatricula.Text = matriculasModel.GetAll()[i].NumeroDeMatricula.ToString();
             CLS();
             CheckLimits();
         }
@@ -112,20 +119,20 @@ namespace Presentation
         private void btnMAnterior_Click(object sender, EventArgs e)
         {
             --i;
-            lblNMatricula.Text = matriculas[i].NumeroDeMatricula.ToString();
+            //AccesData.count = i;
+            lblNMatricula.Text = matriculasModel.GetAll()[i].NumeroDeMatricula.ToString();
             CLS();
             CheckLimits();
         }
 
         private void CLS()
         {
-            if (matriculas[i] != null)
+            if (estudiatesModel.GetAll().Count > i)
             {
                 txtNombre.Text = estudiatesModel.GetAll()[i].Nombres;
                 txtApellido.Text = estudiatesModel.GetAll()[i].Apellidos;
                 txtCarnet.Text = estudiatesModel.GetAll()[i].Carnet;
                 dtpFechaNacimiento.Value = estudiatesModel.GetAll()[i].FechaDeNacimiento;
-                lblCalificaciones.Text = "Calificaciones Agregadas";
 
                 btnAceptar.Visible = false;
                 return;
@@ -133,10 +140,9 @@ namespace Presentation
 
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
-            txtCarnet.Text = matriculas[i].Carnet;
+            txtCarnet.Text = matriculasModel.GetAll()[i].Carnet;
             dtpFechaNacimiento.Value = DateTime.Now;
-            lblCalificaciones.Text = "No se han agregado calificaciones";
-
+            
             btnAceptar.Visible = true;
         }
 
@@ -150,7 +156,7 @@ namespace Presentation
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"{matriculas.Count}");
+            MessageBox.Show($"{matriculasModel.GetAll().Count}");
         }
     }
 }

@@ -30,42 +30,31 @@ namespace Presentation
         private void InitializeComponent()
         {
             this.gbMatriculas = new System.Windows.Forms.GroupBox();
-            this.btnMEliminar = new System.Windows.Forms.Button();
             this.btnMAgregar = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnShowInformation = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnECMostrar = new System.Windows.Forms.Button();
             this.btnEAgregar = new System.Windows.Forms.Button();
             this.rtbMatriculas = new System.Windows.Forms.RichTextBox();
             this.rtbJsonEstudiantes = new System.Windows.Forms.RichTextBox();
-            this.btnShowInformation = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnPrueba = new System.Windows.Forms.Button();
+            this.btnShowEstudiantes = new System.Windows.Forms.Button();
             this.gbMatriculas.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbMatriculas
             // 
-            this.gbMatriculas.Controls.Add(this.btnMEliminar);
             this.gbMatriculas.Controls.Add(this.btnMAgregar);
+            this.gbMatriculas.Controls.Add(this.btnShowInformation);
             this.gbMatriculas.Location = new System.Drawing.Point(12, 12);
             this.gbMatriculas.Name = "gbMatriculas";
             this.gbMatriculas.Size = new System.Drawing.Size(194, 116);
             this.gbMatriculas.TabIndex = 0;
             this.gbMatriculas.TabStop = false;
             this.gbMatriculas.Text = "Matriculas";
-            // 
-            // btnMEliminar
-            // 
-            this.btnMEliminar.Location = new System.Drawing.Point(7, 50);
-            this.btnMEliminar.Name = "btnMEliminar";
-            this.btnMEliminar.Size = new System.Drawing.Size(181, 23);
-            this.btnMEliminar.TabIndex = 1;
-            this.btnMEliminar.Text = "Eliminar Matricula";
-            this.btnMEliminar.UseVisualStyleBackColor = true;
             // 
             // btnMAgregar
             // 
@@ -77,17 +66,18 @@ namespace Presentation
             this.btnMAgregar.UseVisualStyleBackColor = true;
             this.btnMAgregar.Click += new System.EventHandler(this.btnMAgregar_Click);
             // 
-            // groupBox2
+            // btnShowInformation
             // 
-            this.groupBox2.Location = new System.Drawing.Point(240, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(190, 116);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.btnShowInformation.Location = new System.Drawing.Point(7, 49);
+            this.btnShowInformation.Name = "btnShowInformation";
+            this.btnShowInformation.Size = new System.Drawing.Size(181, 23);
+            this.btnShowInformation.TabIndex = 4;
+            this.btnShowInformation.Text = "Mostrar Informacion";
+            this.btnShowInformation.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnShowEstudiantes);
             this.groupBox3.Controls.Add(this.btnECMostrar);
             this.groupBox3.Controls.Add(this.btnEAgregar);
             this.groupBox3.Location = new System.Drawing.Point(463, 12);
@@ -105,6 +95,7 @@ namespace Presentation
             this.btnECMostrar.TabIndex = 1;
             this.btnECMostrar.Text = "Mostrar calificaciones";
             this.btnECMostrar.UseVisualStyleBackColor = true;
+            this.btnECMostrar.Click += new System.EventHandler(this.btnECMostrar_Click);
             // 
             // btnEAgregar
             // 
@@ -131,15 +122,6 @@ namespace Presentation
             this.rtbJsonEstudiantes.Size = new System.Drawing.Size(313, 157);
             this.rtbJsonEstudiantes.TabIndex = 3;
             this.rtbJsonEstudiantes.Text = "";
-            // 
-            // btnShowInformation
-            // 
-            this.btnShowInformation.Location = new System.Drawing.Point(19, 135);
-            this.btnShowInformation.Name = "btnShowInformation";
-            this.btnShowInformation.Size = new System.Drawing.Size(187, 23);
-            this.btnShowInformation.TabIndex = 4;
-            this.btnShowInformation.Text = "Mostrar Informacion";
-            this.btnShowInformation.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -168,30 +150,27 @@ namespace Presentation
             this.label2.TabIndex = 7;
             this.label2.Text = "Estudiantes en formato Json:";
             // 
-            // btnPrueba
+            // btnShowEstudiantes
             // 
-            this.btnPrueba.Location = new System.Drawing.Point(251, 134);
-            this.btnPrueba.Name = "btnPrueba";
-            this.btnPrueba.Size = new System.Drawing.Size(75, 23);
-            this.btnPrueba.TabIndex = 8;
-            this.btnPrueba.Text = "Prueba";
-            this.btnPrueba.UseVisualStyleBackColor = true;
-            this.btnPrueba.Click += new System.EventHandler(this.btnPrueba_Click);
+            this.btnShowEstudiantes.Location = new System.Drawing.Point(7, 80);
+            this.btnShowEstudiantes.Name = "btnShowEstudiantes";
+            this.btnShowEstudiantes.Size = new System.Drawing.Size(178, 23);
+            this.btnShowEstudiantes.TabIndex = 2;
+            this.btnShowEstudiantes.Text = "Mostrar informacion";
+            this.btnShowEstudiantes.UseVisualStyleBackColor = true;
+            this.btnShowEstudiantes.Click += new System.EventHandler(this.btnShowEstudiantes_Click);
             // 
             // FrmGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 372);
-            this.Controls.Add(this.btnPrueba);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.btnShowInformation);
             this.Controls.Add(this.rtbJsonEstudiantes);
             this.Controls.Add(this.rtbMatriculas);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gbMatriculas);
             this.Name = "FrmGeneral";
             this.Text = "Formulario General";
@@ -206,9 +185,7 @@ namespace Presentation
         #endregion
 
         private System.Windows.Forms.GroupBox gbMatriculas;
-        private System.Windows.Forms.Button btnMEliminar;
         private System.Windows.Forms.Button btnMAgregar;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RichTextBox rtbMatriculas;
         private System.Windows.Forms.RichTextBox rtbJsonEstudiantes;
@@ -216,8 +193,8 @@ namespace Presentation
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnPrueba;
         private System.Windows.Forms.Button btnECMostrar;
         private System.Windows.Forms.Button btnEAgregar;
+        private System.Windows.Forms.Button btnShowEstudiantes;
     }
 }

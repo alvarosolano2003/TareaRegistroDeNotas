@@ -30,7 +30,6 @@ namespace Presentation
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblCalificaciones = new System.Windows.Forms.Label();
             this.btnCAgregar = new System.Windows.Forms.Button();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.txtCarnet = new System.Windows.Forms.TextBox();
@@ -53,7 +52,6 @@ namespace Presentation
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblCalificaciones);
             this.groupBox1.Controls.Add(this.btnCAgregar);
             this.groupBox1.Controls.Add(this.dtpFechaNacimiento);
             this.groupBox1.Controls.Add(this.txtCarnet);
@@ -69,15 +67,6 @@ namespace Presentation
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Estudiante";
-            // 
-            // lblCalificaciones
-            // 
-            this.lblCalificaciones.AutoSize = true;
-            this.lblCalificaciones.Location = new System.Drawing.Point(23, 201);
-            this.lblCalificaciones.Name = "lblCalificaciones";
-            this.lblCalificaciones.Size = new System.Drawing.Size(171, 13);
-            this.lblCalificaciones.TabIndex = 13;
-            this.lblCalificaciones.Text = "No se han agregado calificaciones";
             // 
             // btnCAgregar
             // 
@@ -257,7 +246,6 @@ namespace Presentation
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
-        private System.Windows.Forms.Label lblCalificaciones;
         private System.Windows.Forms.Button btnCAgregar;
         private System.Windows.Forms.Button btnMSiguiente;
         private System.Windows.Forms.Button btnMAnterior;

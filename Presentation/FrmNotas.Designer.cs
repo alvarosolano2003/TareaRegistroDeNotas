@@ -30,6 +30,7 @@ namespace Presentation
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblMsg = new System.Windows.Forms.Label();
             this.lblARestantes = new System.Windows.Forms.Label();
             this.lblAlcp = new System.Windows.Forms.Label();
             this.btnSiguiente = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@ namespace Presentation
             this.label1 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
-            this.lblMsg = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudIIP)).BeginInit();
@@ -80,6 +80,15 @@ namespace Presentation
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Calificaciones";
+            // 
+            // lblMsg
+            // 
+            this.lblMsg.AutoSize = true;
+            this.lblMsg.Location = new System.Drawing.Point(29, 70);
+            this.lblMsg.Name = "lblMsg";
+            this.lblMsg.Size = new System.Drawing.Size(155, 13);
+            this.lblMsg.TabIndex = 10;
+            this.lblMsg.Text = "Calificacion agregada con exito";
             // 
             // lblARestantes
             // 
@@ -248,15 +257,6 @@ namespace Presentation
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
-            // 
-            // lblMsg
-            // 
-            this.lblMsg.AutoSize = true;
-            this.lblMsg.Location = new System.Drawing.Point(29, 70);
-            this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(155, 13);
-            this.lblMsg.TabIndex = 10;
-            this.lblMsg.Text = "Calificacion agregada con exito";
             // 
             // FrmNotas
             // 

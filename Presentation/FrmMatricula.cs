@@ -55,6 +55,8 @@ namespace Presentation
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            AccesData.matriculaModelAD = matriculasModel;
+
             FrmGeneral general = new FrmGeneral();
             general.matriculasModel = this.matriculasModel;
             general.Activate();
