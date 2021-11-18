@@ -43,7 +43,7 @@ namespace Presentation
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(292, 358);
+            this.btnRegresar.Location = new System.Drawing.Point(371, 346);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(75, 23);
             this.btnRegresar.TabIndex = 2;
@@ -55,7 +55,7 @@ namespace Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 378);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.rtbMostrar);
             this.Name = "FrmMostrarInformacion";

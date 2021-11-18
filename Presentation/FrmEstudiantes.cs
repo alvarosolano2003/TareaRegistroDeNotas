@@ -31,7 +31,7 @@ namespace Presentation
         private void FrmEstudiantes_Load(object sender, EventArgs e)
         {
             lblNMatricula.Text = matriculasModel.GetAll()[i].NumeroDeMatricula.ToString();
-            txtCarnet.Text = matriculasModel.GetAll()[i].Carnet;
+            lblCarnet.Text = matriculasModel.GetAll()[i].Carnet;
             CLS();
             CheckLimits();
         }
@@ -40,7 +40,7 @@ namespace Presentation
         {
             try
             {
-                CatchExceptions(txtCarnet.Text == string.Empty);
+                CatchExceptions(lblCarnet.Text == string.Empty);
                 CatchExceptions(txtNombre.Text == string.Empty);
                 CatchExceptions(txtApellido.Text == string.Empty);
                 CatchExceptions(dtpFechaNacimiento.Value == null);
@@ -52,7 +52,7 @@ namespace Presentation
                     Id = matriculasModel.GetAll()[i].NumeroDeMatricula,
                     Nombres = txtNombre.Text,
                     Apellidos = txtApellido.Text,
-                    Carnet = txtCarnet.Text,
+                    Carnet = lblCarnet.Text,
                     FechaDeNacimiento = dtpFechaNacimiento.Value,
                     Edad = DateTime.Now.Year - dtpFechaNacimiento.Value.Year,
                     Notas = notasModel.GetAll().ToArray()
@@ -81,7 +81,7 @@ namespace Presentation
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            AccesData.count = 0;
+            //AccesData.count = 0;
             AccesData.estudiantesModelAD = estudiatesModel;
             AccesData.matriculaModelAD = matriculasModel;
 
@@ -95,7 +95,12 @@ namespace Presentation
 
         private void CheckLimits()
         {
-            if (matriculasModel.GetAll().Count - 1 == i)
+            if (matriculasModel.GetAll().Count == 1)
+            {
+                btnMSiguiente.Visible = false;
+                btnMAnterior.Visible = false;
+            }
+            else if (matriculasModel.GetAll().Count - 1 == i)
             {
                 btnMSiguiente.Visible = false;
                 btnMAnterior.Visible = true;
@@ -138,7 +143,7 @@ namespace Presentation
             {
                 txtNombre.Text = estudiatesModel.GetAll()[i].Nombres;
                 txtApellido.Text = estudiatesModel.GetAll()[i].Apellidos;
-                txtCarnet.Text = estudiatesModel.GetAll()[i].Carnet;
+                lblCarnet.Text = estudiatesModel.GetAll()[i].Carnet;
                 dtpFechaNacimiento.Value = estudiatesModel.GetAll()[i].FechaDeNacimiento;
 
                 btnAceptar.Visible = false;
@@ -147,7 +152,7 @@ namespace Presentation
 
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
-            txtCarnet.Text = matriculasModel.GetAll()[i].Carnet;
+            lblCarnet.Text = matriculasModel.GetAll()[i].Carnet;
             dtpFechaNacimiento.Value = DateTime.Now;
             
             btnAceptar.Visible = true;
@@ -159,11 +164,6 @@ namespace Presentation
             {
                 throw new ArgumentException("Todos los campos deben estar llenos.");
             }
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show($"{matriculasModel.GetAll().Count}");
         }
     }
 }

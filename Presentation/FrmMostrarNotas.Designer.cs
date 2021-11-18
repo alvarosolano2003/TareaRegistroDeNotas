@@ -32,8 +32,7 @@ namespace Presentation
             this.btnMostrarNotas = new System.Windows.Forms.Button();
             this.cmbEChose = new System.Windows.Forms.ComboBox();
             this.btnRegresar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // btnMostrarNotas
@@ -65,27 +64,26 @@ namespace Presentation
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
-            // dataGridView1
+            // richTextBox1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 77);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(678, 150);
-            this.dataGridView1.TabIndex = 5;
+            this.richTextBox1.Location = new System.Drawing.Point(13, 131);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(678, 96);
+            this.richTextBox1.TabIndex = 5;
+            this.richTextBox1.Text = "";
             // 
             // FrmMostrarNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(703, 239);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.cmbEChose);
             this.Controls.Add(this.btnMostrarNotas);
             this.Name = "FrmMostrarNotas";
             this.Text = "Formulario de Mostrar Notas";
             this.Load += new System.EventHandler(this.FrmMostrarNotas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -94,6 +92,6 @@ namespace Presentation
         private System.Windows.Forms.Button btnMostrarNotas;
         private System.Windows.Forms.ComboBox cmbEChose;
         private System.Windows.Forms.Button btnRegresar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

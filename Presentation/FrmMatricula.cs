@@ -122,9 +122,5 @@ namespace Presentation
             cbSociologia.Checked = false;
         }
 
-        private void btnPrueba_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show($"{matriculasModel.GetAll().Count}");
-        }
     }
 }
