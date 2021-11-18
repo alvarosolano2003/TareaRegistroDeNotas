@@ -169,9 +169,25 @@ namespace Presentation
 
         private void btnShowInformation_Click(object sender, EventArgs e)
         {
-            FrmMostrarInformacion frmMostrar = new FrmMostrarInformacion();
-            frmMostrar.matriculas = matriculasModel.GetAll();
-            frmMostrar.Show();
+            
+            try
+            {
+                CatchExceptions(AccesData.matriculaModelAD.GetAll().Count == 0);
+
+                AddAccesData();
+
+                FrmMostrarInformacion frmMostrar = new FrmMostrarInformacion();
+                frmMostrar.matriculas = matriculasModel.GetAll();
+                frmMostrar.Activate();
+                frmMostrar.Show();
+                this.Hide();
+                GetAccesData();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show($"{ex.Message}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

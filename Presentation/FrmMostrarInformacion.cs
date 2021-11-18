@@ -20,39 +20,13 @@ namespace Presentation
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string aux = string.Empty;
-            int i = 1;
-
-            //string mostrar = string.Format("{0: -20} {1: -15} {2: -30}",
-               // "Nombre", "Apellido", "Carnet");
-
-            foreach (Matriculas a in matriculas)
-            {
-                string Grupo = DeterminateGrupo(a.Grupo);
-                string Clases = DeterminarClases(a.Asignaturas);
-                if (i == 1)
-                {
-                    aux = $"\n Carnet\t   Grupo\t    Fecha\t   {aux} \n {i}. {a.Carnet}\t  {Grupo}\t {a.Fecha} {Clases}\t ";
-                    i++;
-                }
-                else
-                {
-                    aux = $"{aux} \n {i}. {a.Carnet}\t  {Grupo}\t {a.Fecha} {Clases} ";
-                    i++;
-                }
-            }
-
-            rtbMostrar.Text = aux;
-        }
         private string DeterminarClases(Asignaturas[] a)
         {
             string M = string.Empty;
             int i=0;
             foreach(Asignaturas asignaturas in a)
             {
-                M = $"{M}\t{a[i]}";
+                M = $"{M}   {a[i]}";
                 i++;
             }
             return M;
@@ -79,6 +53,45 @@ namespace Presentation
             {
                 throw new ArgumentException();
             }
+        }
+
+        private void FrmMostrarInformacion_Load(object sender, EventArgs e)
+        {
+            string aux = string.Empty;
+            int i = 1;
+
+            //string mostrar = string.Format("{0: -20} {1: -15} {2: -30}",
+            // "Nombre", "Apellido", "Carnet");
+
+            foreach (Matriculas a in matriculas)
+            {
+                string Grupo = DeterminateGrupo(a.Grupo);
+                string Clases = DeterminarClases(a.Asignaturas);
+                //if (i == 1)
+                //{
+                //    aux = $"\n Carnet\t   Grupo\t    Fecha\t   {aux} \n {i}. {a.Carnet}\t  {Grupo}\t {a.Fecha} {Clases}\t ";
+                //    i++;
+                //}
+                //else
+                //{
+                //    aux = $"{aux} \n {i}. {a.Carnet}\t  {Grupo}\t {a.Fecha} {Clases} ";
+                //    i++;
+                //}
+                aux = $"{aux}\n {i}. Carnet:{a.Carnet}   Grupo:{Grupo}   Fecha:{a.Fecha}   Asignaturas{Clases} ";
+                i++;
+            }
+
+            rtbMostrar.Text = aux;
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+
+            FrmGeneral general = new FrmGeneral();
+            
+            general.Activate();
+            general.Show();
+            this.Close();
         }
     }
 }
